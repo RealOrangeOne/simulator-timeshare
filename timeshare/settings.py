@@ -16,7 +16,8 @@ import environ
 env = environ.Env(
     DEBUG=(bool, True),
     SECRET_KEY=(str, "sekrit"),
-    ALLOWED_HOSTS=(list, "*")
+    ALLOWED_HOSTS=(list, "*"),
+    DEFAULT_FILE_STORAGE=(str, 'django.core.files.storage.FileSystemStorage')
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
