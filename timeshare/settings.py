@@ -14,8 +14,9 @@ from pathlib import Path
 import environ
 
 env = environ.Env(
-    DEBUG=(bool, False),
-    SECRET_KEY=(str, "sekrit")
+    DEBUG=(bool, True),
+    SECRET_KEY=(str, "sekrit"),
+    ALLOWED_HOSTS=(list, "*")
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +32,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'timeshare.runner',
+    'django_dbq'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +129,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JOBS = {
+    "run_simulation": {
+        "tasks": ["timeshare.runner.tasks.run_simulation"]
+    }
+}
