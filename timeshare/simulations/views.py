@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, CreateView, DetailView
 from .models import SimulationRun
 from . import forms
 from django.http import HttpResponseRedirect
+from django_dbq.models import Job
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -16,6 +17,7 @@ class CreateSimulationView(CreateView):
         obj = form.save(commit=False)
         obj.user = self.request.user
         obj.save()
+        Job.objects.create(name="run_simulation", workspace={"simulation_id": obj.id})
         return HttpResponseRedirect("/")
 
 

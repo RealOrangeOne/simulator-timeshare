@@ -1,4 +1,5 @@
 from django.db import models
+from django_dbq.models import Job
 
 
 class SimulationRun(models.Model):
@@ -8,3 +9,7 @@ class SimulationRun(models.Model):
 
     class Meta:
         ordering = ["-created"]
+
+    @property
+    def job(self):
+        return Job.objects.filter(workspace__simulation_id=self.id).latest('created')
