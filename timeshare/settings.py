@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'timeshare.runner',
     'timeshare.users',
-    'timeshare.common',
+    'timeshare.simulations',
     'django_dbq',
     'django_bootstrap5'
 ]
@@ -146,3 +146,6 @@ LOGIN_URL = '/users/login/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+MEDIA_ROOT = BASE_DIR / "uploads"
+MEDIA_URL = "/media/"

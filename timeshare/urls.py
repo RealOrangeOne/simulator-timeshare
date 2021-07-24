@@ -16,10 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from decorator_include import decorator_include
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.static import serve
+from django.conf import settings
+
+superuser_required = user_passes_test(lambda u: u.is_superuser)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('timeshare.users.urls')),
-    path('', decorator_include(login_required, 'timeshare.common.urls'))
+    path('', decorator_include(login_required, 'timeshare.simulations.urls')),
+    path('media/<path:path>', superuser_required(serve), kwargs={'document_root': settings.MEDIA_ROOT})
 ]
