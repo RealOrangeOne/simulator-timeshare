@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'timeshare.runner',
     'timeshare.users',
     'timeshare.common',
-    'django_dbq'
+    'django_dbq',
+    'django_bootstrap5'
 ]
 
 MIDDLEWARE = [

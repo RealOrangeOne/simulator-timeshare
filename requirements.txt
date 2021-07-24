@@ -4,3 +4,4 @@ psycopg2==2.9.1
 git+https://github.com/dabapps/django-db-queue@2e256031d01279e0084c079b78c40e9823f8b758
 django-decorator-include==3.0
 django-storages==1.11.1
+django-bootstrap5==2.1.1
