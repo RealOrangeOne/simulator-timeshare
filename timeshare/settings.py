@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'timeshare.runner',
+    'timeshare.users',
     'django_dbq'
 ]
 
@@ -135,3 +136,5 @@ JOBS = {
         "tasks": ["timeshare.runner.tasks.run_simulation"]
     }
 }
+
+AUTH_USER_MODEL = 'users.User'
