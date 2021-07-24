@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'timeshare.runner',
     'timeshare.users',
+    'timeshare.common',
     'django_dbq'
 ]
 
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'timeshare.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,3 +139,7 @@ JOBS = {
 }
 
 AUTH_USER_MODEL = 'users.User'
+
+LOGIN_URL = '/users/login/'
+
+LOGIN_REDIRECT_URL = '/'
